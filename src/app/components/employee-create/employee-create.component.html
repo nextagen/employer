@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-md-4 register-employee">
+    <div class="card-body">
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" type="text" formControlName="name">
+          <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+            Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Age</label>
+          <input class="form-control" type="number" formControlName="age">
+          <div class="invalid-feedback" *ngIf="submitted && myForm.age.errors?.required">
+            Age is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && myForm.age.errors?.min">
+            Min age: 18
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && myForm.age.errors?.max">
+            Max age: 70
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Office</label>
+          <select class="custom-select form-control" (change)="updateOffice($event.target.value)"
+            formControlName="office">
+            <option value="">Choose...</option>
+            <option *ngFor="let office of Offices" value="{{office}}">{{office}}
+            </option>
+          </select>
+          <div class="invalid-feedback" *ngIf="submitted && myForm.office.errors?.required">
+            Choose office.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Phone</label>
+          <input class="form-control" type="text" formControlName="phone">
+          <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.required">
+            Enter your phone number.
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.pattern">
+            Enter Numbers Only
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success btn-lg btn-block" type="submit">Save</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

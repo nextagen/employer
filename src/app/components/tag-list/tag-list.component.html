@@ -1,0 +1,29 @@
+<div class="container">
+  <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/create-tag">Add Tag</a>
+
+  <p *ngIf="Tag.length <= 0" class="no-data text-center">There is no tag added yet!</p>
+
+  <table class="table table-bordered" *ngIf="Tag.length > 0">
+    <thead class="table-success">
+      <tr>
+        <th scope="col">Tag ID</th>
+        <th scope="col">Name</th>
+        <th scope="col center"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tag of Tag; let i = index">
+        <th scope="row">{{tag._id}}</th>
+        <td>{{tag.name}}</td>
+        <td class="text-center edit-block">
+          <span class="edit" [routerLink]="['/edit-tag/', tag._id]">
+            <button type="button" class="btn btn-success btn-sm">Edit</button>
+          </span>
+          <span class="delete" (click)="removeTag(tag, i)">
+            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
