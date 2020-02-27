@@ -16,8 +16,8 @@ mongoose.connect(dbConfig.db, {
    }
 );
 
-const employeeRoute = require('../backend/routes/employee.route');
-const tagRoute = require('../backend/routes/tag.route');
+const employeeRoute = require('./routes/employee.route');
+const tagRoute = require('./routes/tag.route');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -26,6 +26,10 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 app.use('/api/employee', employeeRoute);
 app.use('/api/tag', tagRoute);
+app.use((req, res) => {
+    console.log(req.url);
+    res.json({ url: req.url });
+});
 
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {

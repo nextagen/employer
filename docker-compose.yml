@@ -1,0 +1,55 @@
+version: '3.5'
+
+services:
+  backend:
+    image: employeer_backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - PORT=4000
+    ports:
+      - 4000:4000
+    depends_on:
+      - mongo
+    links:
+      - mongo:mongo
+    networks:
+      - mongo
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    command: sh -c "node server.js"
+
+  mongo:
+    image: mongo
+    restart: always
+    networks:
+      - mongo
+    environment:
+      MONGO_INITDB_DATABASE: meandatabase
+
+  frontend:
+      image: employeer_frontend
+      build:
+        context: .
+        dockerfile: Dockerfile
+      environment:
+        - PORT=4200
+      ports:
+        - 4200:4200
+      depends_on:
+        - backend
+      networks:
+        - mongo
+      volumes:
+        - .:/usr/src/app
+        - /usr/src/app/node_modules
+      command: sh -c "ng serve --host 0.0.0.0"
+
+networks:
+  mongo:
+    driver: bridge
+
+volumes:
+    mongo:
