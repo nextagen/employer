@@ -14,6 +14,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { ApiService } from "./service/api.service";
 import { TagCreateComponent } from "./components/tag-create/tag-create.component";
 
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { TagCreateComponent } from "./components/tag-create/tag-create.component
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

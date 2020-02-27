@@ -12,6 +12,15 @@ export class EmployeeCreateComponent implements OnInit {
   submitted = false;
   employeeForm: FormGroup;
   Offices: any = ["Riga", "Tallinn", "Vilnius"];
+  allTags: any = [];
+
+  dropdownSettings = {
+    singleSelection: false,
+    idField: "_id",
+    textField: "name",
+    selectAllText: "Select all",
+    unSelectAllText: "Unselect all"
+  };
 
   constructor(
     public fb: FormBuilder,
@@ -24,10 +33,18 @@ export class EmployeeCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getTags();
+
     const id = this.paramId;
     if (id) {
       this.getEmployee(id);
     }
+  }
+
+  getTags() {
+    this.apiService.getTags().subscribe(data => {
+      this.allTags = data;
+    });
   }
 
   getEmployee(id) {
@@ -36,8 +53,11 @@ export class EmployeeCreateComponent implements OnInit {
         name: data["name"],
         age: data["age"],
         office: data["office"],
-        phone: data["phone"]
+        phone: data["phone"],
+        tags: data["tags"]
       });
+
+      this.dropdownSettings = {...this.dropdownSettings};
     });
   }
 
@@ -50,7 +70,8 @@ export class EmployeeCreateComponent implements OnInit {
       name: ["", [Validators.required]],
       age: [0, [Validators.required, Validators.min(18), Validators.max(70)]],
       office: ["", [Validators.required]],
-      phone: ["", [Validators.required, Validators.pattern("^[0-9]+$")]]
+      phone: ["", [Validators.required, Validators.pattern("^[0-9]+$")]],
+      tags: []
     });
   }
 

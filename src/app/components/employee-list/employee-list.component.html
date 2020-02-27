@@ -11,6 +11,7 @@
         <th scope="col">Age</th>
         <th scope="col">Office</th>
         <th scope="col">Phone</th>
+        <th scope="col">Tags</th>
         <th scope="col center"></th>
       </tr>
     </thead>
@@ -21,6 +22,7 @@
         <td>{{employee.age}}</td>
         <td>{{employee.office}}</td>
         <td>{{employee.phone}}</td>
+        <td><div *ngFor="let tag of employee.tags">{{tag.name}}</div></td>
         <td class="text-center edit-block">
           <span class="edit" [routerLink]="['/edit-employee/', employee._id]">
             <button type="button" class="btn btn-success btn-sm">Edit</button>
