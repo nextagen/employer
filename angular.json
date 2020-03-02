@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "employeer": {
+    "employer": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/employeer",
+            "outputPath": "dist/employer",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -58,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "employeer:build"
+            "browserTarget": "employer:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "employeer:build:production"
+              "browserTarget": "employer:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "employeer:build"
+            "browserTarget": "employer:build"
           }
         },
         "test": {
@@ -104,7 +104,7 @@
         }
       }
     },
-    "employeer-e2e": {
+    "employer-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -113,11 +113,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "employeer:serve"
+            "devServerTarget": "employer:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "employeer:serve:production"
+              "devServerTarget": "employer:serve:production"
             }
           }
         },
@@ -133,5 +133,5 @@
       }
     }
   },
-  "defaultProject": "employeer"
+  "defaultProject": "employer"
 }

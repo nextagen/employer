@@ -1,4 +1,4 @@
-# Employeer
+# employer
 
 ## Installation
 
