@@ -15,6 +15,7 @@ import { ApiService } from "./service/api.service";
 import { TagCreateComponent } from "./components/tag-create/tag-create.component";
 
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import { NgxMaskModule } from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

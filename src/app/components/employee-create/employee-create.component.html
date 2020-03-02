@@ -39,7 +39,7 @@
 
         <div class="form-group">
           <label>Phone</label>
-          <input class="form-control" type="text" formControlName="phone">
+          <input class="form-control" type="text" formControlName="phone" mask="000-0000-0000" [validation]="false">
           <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.required">
             Enter your phone number.
           </div>
