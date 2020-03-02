@@ -22,7 +22,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   removeEmployee(employee, index) {
-    if (window.confirm(`Are you sure you want to delete employee ”${employee.name}“`)) {
+    if (window.confirm(`Are you sure you want to delete employee #${index + 1} ”${employee.name}“`)) {
       this.apiService.deleteEmployee(employee._id).subscribe(() => {
         this.Employee.splice(index, 1);
       });
