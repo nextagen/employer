@@ -2,17 +2,17 @@
   <div class="col-md-4 register-employee">
     <div class="card-body">
       <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label>Name</label>
-          <input class="form-control" type="text" formControlName="name">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name">
           <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
             Name is required.
           </div>
-        </div>
+        </mat-form-field>
 
-        <div class="form-group">
-          <label>Age</label>
-          <input class="form-control" type="number" formControlName="age">
+        <mat-form-field appearance="outline">
+          <mat-label>Age</mat-label>
+          <input matInput type="number" formControlName="age">
           <div class="invalid-feedback" *ngIf="submitted && myForm.age.errors?.required">
             Age is required.
           </div>
@@ -22,11 +22,11 @@
           <div class="invalid-feedback" *ngIf="submitted && myForm.age.errors?.max">
             Max age: 70
           </div>
-        </div>
+        </mat-form-field>
 
-        <div class="form-group">
-          <label>Office</label>
-          <select class="custom-select form-control" (change)="updateOffice($event.target.value)"
+        <mat-form-field appearance="outline">
+          <mat-label>Office</mat-label>
+          <select matNativeControl (change)="updateOffice($event.target.value)"
             formControlName="office">
             <option value="">Choose...</option>
             <option *ngFor="let office of Offices" value="{{office}}">{{office}}
@@ -35,18 +35,18 @@
           <div class="invalid-feedback" *ngIf="submitted && myForm.office.errors?.required">
             Choose office.
           </div>
-        </div>
+        </mat-form-field>
 
-        <div class="form-group">
-          <label>Phone</label>
-          <input class="form-control" type="text" formControlName="phone" mask="000-0000-0000" [validation]="false">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput type="text" formControlName="phone" mask="000-0000-0000" [validation]="false">
           <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.required">
             Enter your phone number.
           </div>
           <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.pattern">
             Enter Numbers Only
           </div>
-        </div>
+        </mat-form-field>
 
         <div class="form-group">
           <label>Tags</label>
@@ -61,7 +61,7 @@
         </div>
 
         <div class="form-group">
-          <button class="btn btn-success btn-lg btn-block" type="submit">Save</button>
+          <button mat-raised-button color="primary" type="submit">Save</button>
         </div>
       </form>
 

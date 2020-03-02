@@ -29,7 +29,7 @@ employeeRoute.route('/:id').put((req, res, next) => {
 });
 
 employeeRoute.route('/:id').delete((req, res, next) => {
-  Employee.findOneAndRemove(req.params.id, generalCallback(next, res));
+  Employee.remove({_id: req.params.id}, generalCallback(next, res));
 });
 
 module.exports = employeeRoute;

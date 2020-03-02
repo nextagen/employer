@@ -1,11 +1,11 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <a class="h5 my-0 mr-md-auto font-weight-normal" routerLink="/">Employer</a>
-  <nav class="my-2 my-md-0 mr-md-3">
-    <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/employees-list">Employees</a>
-  </nav>
-  <nav class="my-2 my-md-0 mr-md-3">
-    <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/tag-list">Tags</a>
-  </nav>
+  <button mat-button class="h5 my-0 mr-md-auto font-weight-normal" routerLink="/">Employer</button>
+  <mat-nav-list>
+    <a mat-list-item routerLinkActive="active" routerLink="/employees-list">Employees</a>
+  </mat-nav-list>
+  <mat-nav-list class="my-2 my-md-0 mr-md-3">
+    <a mat-list-item routerLinkActive="active" routerLink="/tag-list">Tags</a>
+  </mat-nav-list>
 </div>
 
 <router-outlet></router-outlet>

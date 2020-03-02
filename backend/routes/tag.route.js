@@ -36,7 +36,7 @@ tagRoute.route('/:id').put((req, res, next) => {
 });
 
 tagRoute.route('/:id').delete((req, res, next) => {
-  Tag.findOneAndRemove(req.params.id, generalCallback(next, res));
+  Tag.remove({_id: req.params.id}, generalCallback(next, res));
 });
 
 module.exports = tagRoute;

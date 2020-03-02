@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from "../../service/api.service";
+import { MatTableDataSource } from "@angular/material/table";
 
 @Component({
   selector: "app-employee-list",
@@ -7,7 +8,8 @@ import { ApiService } from "../../service/api.service";
   styleUrls: ["./employee-list.component.css"]
 })
 export class EmployeeListComponent implements OnInit {
-  Employee: any = [];
+  displayedColumns: string[] = ["name", "age", "office", "phone", "tags", "actions"];
+  dataSource: MatTableDataSource<any>;
 
   constructor(private apiService: ApiService) {
     this.readEmployee();
@@ -17,14 +19,18 @@ export class EmployeeListComponent implements OnInit {
 
   readEmployee() {
     this.apiService.getEmployees().subscribe(data => {
-      this.Employee = data;
+      this.dataSource = new MatTableDataSource<any>(data as any);
     });
   }
 
-  removeEmployee(employee, index) {
-    if (window.confirm(`Are you sure you want to delete employee #${index + 1} ”${employee.name}“`)) {
+  removeEmployee(employee) {
+    if (
+      window.confirm(
+        `Are you sure you want to delete employee ”${employee.name}“`
+      )
+    ) {
       this.apiService.deleteEmployee(employee._id).subscribe(() => {
-        this.Employee.splice(index, 1);
+        this.readEmployee();
       });
     }
   }

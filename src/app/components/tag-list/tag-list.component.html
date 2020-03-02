@@ -1,29 +1,29 @@
 <div class="container">
-  <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/create-tag">Add Tag</a>
+  <button mat-raised-button color="primary" class="btn-add" routerLinkActive="active" routerLink="/create-tag">
+    Add Tag
+  </button>
 
-  <p *ngIf="Tag.length <= 0" class="no-data text-center">There is no tag added yet!</p>
+  <p *ngIf="dataSource && dataSource.data.length <= 0" class="no-data text-center">There is no tag added yet!</p>
 
-  <table class="table table-bordered" *ngIf="Tag.length > 0">
-    <thead class="table-success">
-      <tr>
-        <th scope="col">Tag ID</th>
-        <th scope="col">Name</th>
-        <th scope="col center"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let tag of Tag; let i = index">
-        <th scope="row">{{tag._id}}</th>
-        <td>{{tag.name}}</td>
-        <td class="text-center edit-block">
-          <span class="edit" [routerLink]="['/edit-tag/', tag._id]">
-            <button type="button" class="btn btn-success btn-sm">Edit</button>
+  <table mat-table *ngIf="dataSource && dataSource.data.length > 0" [dataSource]="dataSource" class="mat-elevation-z4">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let tag">{{tag.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let tag">
+        <span class="edit" [routerLink]="['/edit-tag/', tag._id]">
+            <button mat-raised-button type="button">Edit</button>
           </span>
-          <span class="delete" (click)="removeTag(tag, i)">
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+        <span class="btn-action" (click)="removeTag(tag)">
+            <button mat-raised-button color="warn" type="button">Delete</button>
           </span>
-        </td>
-      </tr>
-    </tbody>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let tag; columns: displayedColumns;"></tr>
   </table>
 </div>

@@ -1,3 +1,11 @@
-.btn-outline-primary {
+.btn-add {
     margin-bottom: 16px;
+}
+
+.btn-action {
+    margin-left: 16px;
+}
+
+table {
+    width: 100%;
 }
