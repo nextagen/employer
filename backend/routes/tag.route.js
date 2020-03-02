@@ -11,7 +11,14 @@ const generalCallback = (next, res) => (error, data) => {
 };
 
 tagRoute.route('/').post((req, res, next) => {
-  Tag.create(req.body, generalCallback(next, res));
+  Tag.find({name: req.body["name"]}).then(result => {
+    if(result.length > 0) {
+      res.json(null);
+    } else {
+      Tag.create(req.body, generalCallback(next, res));
+    }
+  });
+
 });
 
 tagRoute.route('/').get((req, res) => {
