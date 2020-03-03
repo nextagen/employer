@@ -22,6 +22,7 @@ import { TagCreateComponent } from "./components/tag-create/tag-create.component
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { NgxMaskModule } from "ngx-mask";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { AutofocusDirective } from "./autofocus.derective";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
     EmployeeCreateComponent,
     EmployeeListComponent,
     TagListComponent,
-    TagCreateComponent
+    TagCreateComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,

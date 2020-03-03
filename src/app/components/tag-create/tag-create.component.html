@@ -5,7 +5,7 @@
         <div class="form-group">
           <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
-            <input matInput type="text" formControlName="name">
+            <input matInput type="text" formControlName="name" appMatInputAutofocus>
             <mat-error *ngIf="submitted && myForm.name.errors?.required" class="alert alert-danger">
               Name is required.
             </mat-error>
