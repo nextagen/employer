@@ -8,7 +8,14 @@ import { MatTableDataSource } from "@angular/material/table";
   styleUrls: ["./employee-list.component.css"]
 })
 export class EmployeeListComponent implements OnInit {
-  displayedColumns: string[] = ["name", "age", "office", "phone", "tags", "actions"];
+  displayedColumns: string[] = [
+    "name",
+    "age",
+    "office",
+    "phone",
+    "tags",
+    "actions"
+  ];
   dataSource: MatTableDataSource<any>;
 
   constructor(private apiService: ApiService) {
@@ -16,6 +23,17 @@ export class EmployeeListComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  getAge(dateString) {
+    const today = new Date();
+    const birthDate = new Date(dateString);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return Math.max(0, age);
+  }
 
   readEmployee() {
     this.apiService.getEmployees().subscribe(data => {

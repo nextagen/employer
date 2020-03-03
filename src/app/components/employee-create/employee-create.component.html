@@ -11,16 +11,12 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Age</mat-label>
-          <input matInput type="number" formControlName="age">
+          <mat-label>Date of birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="age" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
           <div class="invalid-feedback" *ngIf="submitted && myForm.age.errors?.required">
             Age is required.
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && myForm.age.errors?.min">
-            Min age: 18
-          </div>
-          <div class="invalid-feedback" *ngIf="submitted && myForm.age.errors?.max">
-            Max age: 70
           </div>
         </mat-form-field>
 

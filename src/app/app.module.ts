@@ -23,6 +23,8 @@ import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { NgxMaskModule } from "ngx-mask";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { AutofocusDirective } from "./autofocus.derective";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { AutofocusDirective } from "./autofocus.derective";
     MatTableModule,
     MatInputModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

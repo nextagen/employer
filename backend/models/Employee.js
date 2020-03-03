@@ -6,7 +6,7 @@ let Employee = new Schema({
       type: String
    },
    age: {
-      type: Number
+      type: String
    },
    office: {
       type: String

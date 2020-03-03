@@ -68,7 +68,7 @@ export class EmployeeCreateComponent implements OnInit {
   mainForm() {
     this.employeeForm = this.fb.group({
       name: ["", [Validators.required]],
-      age: [0, [Validators.required, Validators.min(18), Validators.max(70)]],
+      age: ["", [Validators.required]],
       office: ["", [Validators.required]],
       phone: ["", [Validators.required, Validators.pattern("^[0-9]+$")]],
       tags: []
