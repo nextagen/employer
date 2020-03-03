@@ -9,3 +9,7 @@
 table {
     width: 100%;
 }
+
+.btn-container {
+    display: flex;
+}
